@@ -17,15 +17,15 @@ Updates:
 This has been updated to produce libs for armv7 and armv7s. A few issues in the
 original script have been addressed. 
 
-The script will now download boost_1.51.0 for you. This allows me to include this script in 
-source control with minimal size. In the original script user_config.jam
-was blindiny appended to. the script has been updated to edit the scripr rather
-than update it. It uses a known comment to specify where to edit it. This allows
-the script to be run multiple times without fail on an alread unpacked boost
-source folder. There were also some issues with how the final fat file was generated.
-Boost contains a few places where the same name was used for a file. This caused
-issues because the resulting object file (.o) would end up overwriting that of
-and existing (.o) file when repackaging all the separate boost libraries into
+The script will now download boost_1.51.0 for you. This allows this script to be 
+included in source control with minimal size. In the original script user_config.jam
+was blindiny appended to. Back to back runs would fail. The script has been updated to 
+edit the file rather than append to it. It uses a known comment to specify where to 
+edit it. This allows the script to be run multiple times without fail on an already 
+unpacked boost source folder. There were also some issues with how the final fat file 
+was generated. Boost contains a few places where the same name was used for a file. 
+This caused issues because the resulting object file (.o) would end up overwriting 
+that of and existing (.o) file when repackaging all the separate boost libraries into
 a single archive (.a). The solution used is to simply rename all the .o files
 by prefixing them the package name before aggregating them into a single archive.
 So far this works with boost 1.51.0 under Xcode 4.3 and greater.
